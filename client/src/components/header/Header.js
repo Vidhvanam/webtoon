@@ -1,36 +1,49 @@
 import logo from './logo3.png'
 import './header.css'
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 function Header() {
-    return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="#"><img className='logo' src={logo}/></a>
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
-                        </li>
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                    <NavLink to='/login'>Login</NavLink>
-                </div>
-            </nav>
-        </>
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <img className='logo me-5' src={logo} />
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item me-3">
+                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+              </li>
+              <li className="nav-item me-3">
+                <NavLink className="nav-link" to="/genres">Genres</NavLink>
+              </li>
+
+              <li className="nav-item me-3">
+                <NavLink className="nav-link" to='/popular'>Popular</NavLink>
+              </li>
+              <li className="nav-item me-3">
+                <NavLink className="nav-link" to='/contact'>Contact us</NavLink>
+              </li>
+              <li className="nav-item me-3">
+                <NavLink className="nav-link" to='/about'>About</NavLink>
+              </li>
+            </ul>
+            <button type="button" className="btn btn-dark me-2">Publish</button>
+            <button className="btn btn-outline-success me-2" type="button">
+              <NavLink to='/login'>login</NavLink>
+            </button>
+            <form className="d-flex" role="search">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            </form>
+
+          </div>
+        </div>
+      </nav>
+    </>
 
 
-    )
+  )
 }
 export default Header
+
