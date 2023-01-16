@@ -1,38 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"
-import { GoogleLogin } from 'react-google-login';
-import { gapi } from 'gapi-script';
+import { NavLink, useNavigate } from "react-router-dom"
+// import { GoogleLogin } from 'react-google-login';
+// import { gapi } from 'gapi-script';
 
 
-const emailRegex =/^[A-Za-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+
 const Login = ({ setLoginUser }) => {
+
   const [user,setUser] = useState({
     email:"",
-    password: ""
+    password: "",
+    
 })
-const [error ,setError] = useState({
-    errEmail :'',
-    errPass :''
-})
+  const formValidation = (e) =>{
+    const {name , value} = e.target
 
-const formValidation = (e) =>{
-  const {name , value} = e.target
-  const newError = error
-  switch(name){
-    case 'email':
-     newError.errEmail = emailRegex.test(value) ? '' :'Enter valid email'
-      break;
-    case 'pass':
-     
-    newError.errPass = value.length < 6 ? 'Password should be at least 6 character long' :''
-      break;
-
-  
+    setUser({...user , [name] : value})
   }
-  setUser({...user , [name] : value})
-  setError(newError)
-}
   return (
     <section className="main-container">
       <div className="container-fluid h-custom">
@@ -44,7 +29,7 @@ const formValidation = (e) =>{
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form>
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p className="lead fw-normal mb-0 me-3">lOGIN TO WEBTOON</p>
+                <p className="lead fw-normal mb-0 me-3">LOGIN TO WEBTOON</p>
 
               </div>
 
@@ -53,15 +38,13 @@ const formValidation = (e) =>{
                   name='email'
                   placeholder="Enter a valid email address" 
                   onChange={formValidation}/>
-                  {error.errEmail.length > 0 && <small className='invalid-feedback d-block'>{error.errEmail}</small>}
               </div>
-
+            
               <div className="form-outline mb-5">
                 <input type="password" id="form3Example4" className="form-control form-control-lg"
-                  name='pass'
+                  name='password'
                   placeholder="Enter password" 
                   onChange={formValidation}/>
-                  {error.errPass.length > 0 && <small className='invalid-feedback d-block'>{error.errPass}</small>}
 
               </div>
 
@@ -77,8 +60,8 @@ const formValidation = (e) =>{
 
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button type="button" className="btn  btn-lg main-btn">Login</button>
-                <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                  className="link-danger">Register</a></p>
+                <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <NavLink to="/registration"
+                  className="link-danger">Register</NavLink></p>
               </div>
 
             </form>

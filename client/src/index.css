@@ -13,10 +13,11 @@ body {
 .main-container{
   min-height: 100vh;
   padding:40px;
-  
+  display: flex;
+  justify-content: center;
 }
 footer{
-  padding : 20px 0px;
+  padding-top : 20px;
 }
 
 .main-btn{

@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import NotFound from './components/NotFound';
 import Home from './components/Home'
+import Registration from './components/registration/Regitration';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route exact  path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="/genres" element={<Genres />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/contact" element={<ContactUs />} />
