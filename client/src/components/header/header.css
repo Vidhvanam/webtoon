@@ -23,3 +23,7 @@ nav button :hover{
 nav .active{
     color : var(--main-color) !important;
 }
+nav .login-btn{
+    width:100%;
+    height: 100%;
+}

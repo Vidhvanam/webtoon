@@ -11,8 +11,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .main-container{
-  height: 100vh;
+  min-height: 100vh;
   padding:40px;
+  
+}
+footer{
+  padding : 20px 0px;
+}
+
+.main-btn{
+  padding : 10px 20px;
+  color : white;
+  background-color: var(--main-color);
 }
 
 
