@@ -104,7 +104,7 @@ const onSubmit = (e) =>{
 
           </div>    
               <div className="form-outline  mt-5 mb-3">
-                <input type="email" className=" form-control form-control-lg"
+                <input type="text" className=" form-control form-control-lg"
                   name='userName'
                   placeholder="Enter user name" 
                   onChange={formValidation}/>
@@ -119,7 +119,7 @@ const onSubmit = (e) =>{
                   {error.errEmail.length > 0 && <small className='invalid-feedback d-block'>{error.errEmail}</small>}
               </div>
               <div className="form-outline  mb-3">
-                <input type="email" className=" form-control form-control-lg"
+                <input type="number" className=" form-control form-control-lg"
                   name='phone'
                   placeholder="Enter phone number" 
                   onChange={formValidation}/>
@@ -154,7 +154,7 @@ const onSubmit = (e) =>{
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button type="button" className="btn  btn-lg main-btn">Registration</button>
+                <button type="submit" className="btn  btn-lg main-btn">Registration</button>
                 <p className="small fw-bold mt-2 pt-1 mb-0">Have an account? <NavLink to="/login"
                   className="link-danger">LOGIN</NavLink></p>
               </div>
