@@ -15,26 +15,79 @@ const Registration = ({ setRegistrationUser }) => {
     conformPass : ""
 })
 const [error ,setError] = useState({
+    errUserName :'',
     errEmail :'',
-    errPass :''
+    errPhone :'',
+    errPass :'',
+    errConformPass :''
 })
 
-const formValidation = (e) =>{
-  const {name , value} = e.target
-  const newError = error
-  switch(name){
-    case 'email':
-     newError.errEmail = emailRegex.test(value) ? '' :'Enter valid email'
-      break;
-    case 'pass':
-     
-    newError.errPass = value.length < 6 ? 'Password should be at least 6 character long' :''
-      break;
-
-  
+const formValidation = e => {
+  e.preventDefault();
+  const { name, value } = e.target;
+  const newError = error   
+  switch (name) {
+      case "userName":
+          newError.errUserName =
+              value.length < 4 ? "Atleast 4 characaters required" : "";
+              // console.log(error.errName)
+          break;
+      case "email":
+          newError.errEmail = emailRegex.test(value)
+              ? ""
+              : "Email address is invalid";
+              console.log(error.errEmail)
+          break;
+      case "phone":
+          newError.errPhone =
+              value.length != 10 ? "Not a valid phone number" : "";
+          break;
+          case "password":
+            newError.errPass =
+                value.length < 6 ? "Atleast 6 characaters required" : "";
+            break;
+            case "conformPass":
+              newError.errConformPass =
+                  value !== user.password ? "Password does not match" : "";
+              break;
+      default:
+          break;
   }
-  setUser({...user , [name] : value})
-  setError(newError)
+ setError(newError);
+ setUser(prevData =>{
+   return {...prevData , [name] : value}
+ });
+};
+
+const formValid = () => {
+  let isValid = true;
+ 
+  Object.values(error).forEach(val => {
+      if (val.length > 0) {
+          isValid = false
+      } 
+      
+  });
+  Object.values(user).forEach(val => {
+      if (val === '') {
+          // console.log('val :>> ', val);
+          isValid = false
+      } 
+      
+  });
+  return isValid
+ 
+}
+const onSubmit = (e) =>{
+  e.preventDefault()
+  if(formValid()){
+      console.log('valid form');
+      // console.log('this.state :>> ', this.state);
+  }else{
+      console.log('invalid form');
+      // console.log('this.state :>> ', this.state);
+  }
+ 
 }
   return (
     <section className="main-container">
@@ -45,16 +98,18 @@ const formValidation = (e) =>{
               className="img-fluid" alt="Sample image" />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form>
+            <form onSubmit={onSubmit}>
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                 <p className="lead fw-normal mb-0 me-3">Registrater to webtoon</p>
 
           </div>    
               <div className="form-outline  mt-5 mb-3">
-                <input type="email" id="form3Example3" className=" form-control form-control-lg"
-                  name='phone'
+                <input type="email" className=" form-control form-control-lg"
+                  name='userName'
                   placeholder="Enter user name" 
                   onChange={formValidation}/>
+                  {error.errUserName.length > 0 && <small className='invalid-feedback d-block'>{error.errUserName}</small>}
+                  {console.log(error.errPass)}
               </div>
               <div className="form-outline mb-3">
                 <input type="email" id="form3Example3" className=" form-control form-control-lg"
@@ -64,13 +119,15 @@ const formValidation = (e) =>{
                   {error.errEmail.length > 0 && <small className='invalid-feedback d-block'>{error.errEmail}</small>}
               </div>
               <div className="form-outline  mb-3">
-                <input type="email" id="form3Example3" className=" form-control form-control-lg"
+                <input type="email" className=" form-control form-control-lg"
                   name='phone'
                   placeholder="Enter phone number" 
                   onChange={formValidation}/>
+                  {error.errPhone.length > 0 && <small className='invalid-feedback d-block'>{error.errPhone}</small>}
+
               </div>
               <div className="form-outline mb-3">
-                <input type="password" id="form3Example4" className="form-control form-control-lg"
+                <input type="password"  className="form-control form-control-lg"
                   name='password'
                   placeholder="Enter password" 
                   onChange={formValidation}/>
@@ -82,7 +139,7 @@ const formValidation = (e) =>{
                   name='conformPass'
                   placeholder="Conform Password" 
                   onChange={formValidation}/>
-                  {error.errPass.length > 0 && <small className='invalid-feedback d-block'>{error.errPass}</small>}
+                  {error.errConformPass.length > 0 && <small className='invalid-feedback d-block'>{error.errConformPass}</small>}
 
               </div>
 
