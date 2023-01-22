@@ -1,9 +1,9 @@
 import Card from './Card'
-
-import { useEffect, useState } from 'react'
+import { useEffect, useState , useContext} from 'react'
 import axios from 'axios'
 import Slider from './Slider'
 function Home() {
+   
     const [seriesData, setSeriesData] = useState([
         {
             _id: "63cac612305732edcfde1ae6",
@@ -31,7 +31,7 @@ function Home() {
             reviews: ["review-id-1", "review-id-1"],
             date: "2023-12-31T18:30:00.000Z"
         }, {
-            _id: "63cac612305732edcfde1ae6",
+            _id: "63cac612305732edcfde1ae46",
             userId: "63c8ce0ec9e27245d70b4c69",
             name: "sweet home",
             completed: true,
@@ -43,7 +43,7 @@ function Home() {
             reviews: ["review-id-1", "review-id-1"],
             date: "2022-12-31T18:30:00.000Z"
         }, {
-            _id: "63cac612305732edcfde1ae6",
+            _id: "63cac612305732edcfde1aed6",
             userId: "63c8ce0ec9e27245d70b4c69",
             name: "sweet home",
             completed: true,
@@ -69,7 +69,7 @@ function Home() {
     }, [])
     return (
 
-        <div className="main-container">
+        <div className="home-container">
             {console.log(seriesData)}
             <Slider />
             <div className='sub-container'>
@@ -77,11 +77,7 @@ function Home() {
                 <div className="flex-box">
                 {NewSeries}
                 </div>
-            </div>
-
-            
-
-            
+            </div>            
         </div>
     )
 }

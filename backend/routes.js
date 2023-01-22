@@ -42,7 +42,7 @@ app.get("/",(req,res)=>{
         res.send({series : [...series]})
     })
 })
-app.post("/Login",(req,res)=>{
+app.post("/auth/login",(req,res)=>{
     const {email,password} =req.body;
     console.log('email' , password)
     users.findOne({email:email},(err,user)=>{
@@ -58,7 +58,7 @@ app.post("/Login",(req,res)=>{
         }
     })
 });
-app.post("/Register",(req,res)=>{
+app.post("auth/register",(req,res)=>{
     console.log(req.body) 
     const {userName,phone,email,password} =req.body;
     users.findOne({email:email},(err,user)=>{

@@ -1,9 +1,21 @@
 import logo from './logo3.png'
 import './header.css'
 import { NavLink } from 'react-router-dom'
+import { useContext ,useEffect } from 'react'
+import { userContext } from '../UserContext'
+import { FaUserAlt } from 'react-icons/fa'
 function Header() {
+  
+  
+  const {user , setUser} = useContext(userContext)
+  useEffect(()=>{
+      if(localStorage.getItem('user')){
+          setUser(JSON.parse(localStorage.getItem('user')))
+      }
+  },[])
   return (
     <>
+      {console.log(user)}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <img className='logo me-5' src={logo} />
@@ -30,9 +42,13 @@ function Header() {
               </li>
             </ul>
             <button type="button" className="btn btn-dark me-2">Publish</button>
-            <button className="btn btn-outline-success me-2 login-btn" type="button">
-              <NavLink to='/login' className=''>login</NavLink>
-            </button>
+            {user ? (<>
+             <NavLink to={`/account/${user._id}`} className='nav-link user-account login-btn'> <FaUserAlt /> {user.userName?.substring(0, 6)}</NavLink>
+            </>
+            )
+              :<NavLink to='/login' className='nav-link login-btn'>login</NavLink>
+
+            }
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             </form>

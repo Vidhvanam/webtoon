@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 // import { GoogleRegistration } from 'react-google-Registration';
 // import { gapi } from 'gapi-script';
 
@@ -89,7 +89,7 @@ const onSubmit = (e) =>{
         phone,
         password
       }
-      axios.post("http://localhost:6969/Register",newUser)
+      axios.post("http://localhost:6969/api/auth/register",newUser)
       .then(res=>{alert(res.data.message)})
       // console.log('this.state :>> ', this.state);
   }else{
@@ -100,7 +100,7 @@ const onSubmit = (e) =>{
 }
   return (
     <section className="main-container">
-      <div className="container-fluid h-custom">
+      <div className="container-fluid h-custom pd-y-40">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"

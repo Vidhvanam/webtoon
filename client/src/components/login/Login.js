@@ -1,27 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState ,useContext, useEffect} from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from "react-router-dom"
 // import { GoogleLogin } from 'react-google-login';
 // import { gapi } from 'gapi-script';
+import { userContext } from '../UserContext';
 
-
-
-const Login = ({ setLoginUser }) => {
-
-  const [user,setUser] = useState({
+const Login = () => {
+  const navigation = useNavigate()
+  const {user , setUser} = useContext(userContext)
+  const [logUser,setLogUser] = useState({
     email:"",
     password: "",
     
 })
+useEffect(()=>{
+  if(user){
+
+     console.log(user)
+     localStorage.setItem('user' ,JSON.stringify(user))
+    navigation('/') 
+    // sessionStorage.setItem('user',user)
+  }
+},[user])
+
   const formValidation = (e) =>{
     const {name , value} = e.target
 
-    setUser({...user , [name] : value})
+    setLogUser({...logUser , [name] : value})
   }
-  const onSubmit = () =>{
+
+const onSubmit = () =>{
     
-      axios.post("http://localhost:6969/Login",user)
-      .then(res=>{alert(res.data.message)})
+      axios.post("http://localhost:6969/api/auth/login",logUser)
+      .then(res=>{
+        alert(res.data.message)
+        if(res.data.user){
+          // console.log(res.data.user)
+          setUser(res.data.user._doc)
+          
+        }
+      })
   
   }
   return (
@@ -55,12 +73,12 @@ const Login = ({ setLoginUser }) => {
               </div>
 
               <div className="d-flex justify-content-between align-items-center">
-                <div className="form-check mb-0">
+                {/* <div className="form-check mb-0">
                   <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                   <label className="form-check-label" htmlFor="form2Example3">
                     Remember me
                   </label>
-                </div>
+                </div> */}
                 <a href="#!" className="text-body">Forgot password?</a>
               </div>
 

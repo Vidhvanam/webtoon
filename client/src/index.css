@@ -15,9 +15,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(221, 217, 217);
 }
+
 .main-container{
   min-height: 100vh;
-  /* padding:40px; */
+  /* padding:40px 0px; */
+ 
+}
+
+.home-container{
+  min-height: 100vh;
+  /* padding:40px 0px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +32,9 @@ body {
 footer{
   padding-top : 20px;
 }
-
+.pd-y-40{
+  padding:40px;
+}
 .main-btn{
   padding : 10px 20px;
   color : white;
@@ -109,3 +118,61 @@ footer{
   
 } */
 
+
+/* series page  */
+.series-container{
+  max-width: 900px;
+  /* margin-top: 40px; */
+  margin: 40px auto ;
+  padding : 40px;
+  background-color: #fff;   
+}
+.flex-col-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.flex-row-box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.episodes-container{
+  margin-top: 40px;
+}
+.gap-2{
+  gap:2rem;
+}
+.episode{ 
+  width: 100%;
+  text-decoration: none;
+  color:black;
+  cursor: pointer;
+  justify-content: space-between;
+  padding : 20px;
+  background-color: rgb(223, 220, 220);
+}
+.mr-5{
+  margin:5px;
+}
+
+@media only screen and (max-width: 430px )  {
+  .episode {
+    padding : 10px;
+    justify-content: center; 
+  }
+}
+
+.pdf-document {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pdf-page {
+  /* width: 100px;
+  height: 100px; */
+  margin: 0 10px;
+  box-shadow: 10px green;
+  border: 1px solid red;
+}
