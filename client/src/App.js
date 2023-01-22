@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import NotFound from './components/NotFound';
 import Home from './components/Home'
+import SeriesInfo from './components/SeriesInfo'
 import Registration from './components/registration/Regitration';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/popular" element={<Popular />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/series/:id" element={<SeriesInfo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
         <Footer />

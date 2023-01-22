@@ -30,8 +30,8 @@ function Header() {
               </li>
             </ul>
             <button type="button" className="btn btn-dark me-2">Publish</button>
-            <button className="btn btn-outline-success me-2" type="button">
-              <NavLink to='/login'>login</NavLink>
+            <button className="btn btn-outline-success me-2 login-btn" type="button">
+              <NavLink to='/login' className=''>login</NavLink>
             </button>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

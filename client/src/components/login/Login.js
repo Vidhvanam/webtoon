@@ -18,6 +18,12 @@ const Login = ({ setLoginUser }) => {
 
     setUser({...user , [name] : value})
   }
+  const onSubmit = () =>{
+    
+      axios.post("http://localhost:6969/Login",user)
+      .then(res=>{alert(res.data.message)})
+  
+  }
   return (
     <section className="main-container">
       <div className="container-fluid h-custom">
@@ -27,7 +33,7 @@ const Login = ({ setLoginUser }) => {
               className="img-fluid" alt="Sample image" />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form>
+            <form >
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                 <p className="lead fw-normal mb-0 me-3">LOGIN TO WEBTOON</p>
 
@@ -59,7 +65,7 @@ const Login = ({ setLoginUser }) => {
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button type="button" className="btn  btn-lg main-btn">Login</button>
+                <button type="button" className="btn  btn-lg main-btn" onClick={onSubmit}>Login</button>
                 <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <NavLink to="/registration"
                   className="link-danger">Register</NavLink></p>
               </div>

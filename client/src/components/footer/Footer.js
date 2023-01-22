@@ -1,5 +1,5 @@
 import logo from '../header/logo3.png'
-
+import { NavLink } from 'react-router-dom'
 
 export default function Footer() {
   return (
@@ -82,8 +82,8 @@ export default function Footer() {
           style={{ backgroundColor: 'var(--main-color)' }}
         >
           © 2020 Copyright:
-          <a className="text-dark" href="https://mdbootstrap.com/"
-          >Wbtoon.com</a>
+          <NavLink className="text-dark" to="/"
+          >Wbtoon.com</NavLink>
         </div>
       </footer>
     </>

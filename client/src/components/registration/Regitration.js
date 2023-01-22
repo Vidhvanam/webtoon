@@ -82,6 +82,15 @@ const onSubmit = (e) =>{
   e.preventDefault()
   if(formValid()){
       console.log('valid form');
+      const {userName , email , phone  ,password } = user 
+      const newUser ={ 
+        userName,
+        email,
+        phone,
+        password
+      }
+      axios.post("http://localhost:6969/Register",newUser)
+      .then(res=>{alert(res.data.message)})
       // console.log('this.state :>> ', this.state);
   }else{
       console.log('invalid form');
@@ -94,13 +103,13 @@ const onSubmit = (e) =>{
       <div className="container-fluid h-custom">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-Registration-form/draw2.webp"
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
               className="img-fluid" alt="Sample image" />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form onSubmit={onSubmit}>
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p className="lead fw-normal mb-0 me-3">Registrater to webtoon</p>
+                <p className="lead fw-normal mb-0 me-3">Register to webtoon</p>
 
           </div>    
               <div className="form-outline  mt-5 mb-3">
@@ -140,16 +149,10 @@ const onSubmit = (e) =>{
                   placeholder="Conform Password" 
                   onChange={formValidation}/>
                   {error.errConformPass.length > 0 && <small className='invalid-feedback d-block'>{error.errConformPass}</small>}
-
               </div>
 
               <div className="d-flex justify-content-between align-items-center">
-                <div className="form-check mb-0">
-                  <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                  <label className="form-check-label" htmlFor="form2Example3">
-                    Remember me
-                  </label>
-                </div>
+                
                 <a href="#!" className="text-body">Forgot password?</a>
               </div>
 
