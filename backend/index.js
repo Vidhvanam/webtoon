@@ -4,11 +4,13 @@ import mongoose from "mongoose";
 import seriesModel from "./modules/series.js"
 import dotenv from 'dotenv'
 import authRoute from './routes/auth.js'
+import seriesRoute from './routes/series.js'
+
 dotenv.config()
 
 const app = express();
 app.use(express.json());
-
+app.use('/public',express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 // app.use(express.urlencoded());
 app.use(cors());
@@ -25,6 +27,7 @@ mongoose.connect(process.env.MONGO_URL,{
 ).catch((err)=> console.log("not connected to DB"))
 
 app.use("/api/auth",authRoute)
+app.use("/api/series",seriesRoute)
 // console.log(authRoute)
 //routes routes
 app.get("/",(req,res)=>{

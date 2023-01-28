@@ -16,6 +16,13 @@ body {
   background-color: rgb(221, 217, 217);
 }
 
+#carouselExampleIndicators{
+  /* background-image: url(./img/sliderImg/Unlovable-Replacement-Mobile-Banner2.2.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(14, 155, 33, 0.171);
+}
+
 .main-container{
   min-height: 100vh;
   /* padding:40px 0px; */
@@ -175,4 +182,32 @@ footer{
   margin: 0 10px;
   box-shadow: 10px green;
   border: 1px solid red;
+}
+
+/* user account page */
+.user-account-nav{
+  background-color: rgb(243, 242, 242);
+}
+.user-account-nav ul{
+  list-style: none;
+  padding :0;
+  margin :0;
+  height: 60px;
+  justify-content: center;
+}
+.user-account-nav ul li{
+  height: 100%;
+  display: inline-block;
+}
+.user-account-nav ul li a{
+  padding : 10px 20px;
+  display: inline-block;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: 0.3s all;
+}
+.user-account-nav ul li a:hover{
+  background-color: rgba(219, 215, 215, 0.377);
+  color:var(--main-color) !important;
 }

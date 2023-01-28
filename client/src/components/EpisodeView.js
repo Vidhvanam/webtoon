@@ -4,7 +4,7 @@ function App() {
 
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const  pdf  = process.env.PUBLIC_URL+"/pdfs/test.pdf";
+  const  pdf  = process.env.PUBLIC_URL+"/pdfs/GOH1.pdf";
   function onDocumentLoadSuccess({numPages}){
     setNumPages(numPages);
     setPageNumber(1);
@@ -23,24 +23,29 @@ function App() {
   }
 
   return (
-    <div className="App">
+    // <div className="App">
     
-      <center>
-        <div>
-          <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-            {Array.from(
-              new Array(numPages),
-              (el,index) => (
-                <Page 
-                  key={`page_${index+1}`}
-                  pageNumber={index+1}
-                />
-              )
-            )}
-          </Document>
-        </div>
-      </center>
-    </div>
+    //   <center>
+    //     <div>
+    //       <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+    //         {Array.from(
+    //           new Array(numPages),
+    //           (el,index) => (
+    //             <Page 
+    //               key={`page_${index+1}`}
+    //               pageNumber={index+1}
+    //             />
+    //           )
+    //         )}
+    //       </Document>
+    //     </div>
+    //   </center>
+    // </div>
+    <>
+      <div className='flex-col-box'>
+        <embed src={pdf} width='100%' height='600px'/>
+      </div>
+    </>
   );
 }
 

@@ -62,10 +62,10 @@ function Home() {
     ))
 
     useEffect(() => {
-        // axios.get('http://localhost:6969/')
-        // .then(res=>{
-        //     setSeriesData(res.data.series)
-        // })
+        axios.get('http://localhost:6969/')
+        .then(res=>{
+            setSeriesData(res.data.series)
+        })
     }, [])
     return (
 

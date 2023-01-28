@@ -9,11 +9,11 @@ export default function Card({series}){
    
       // <div className="col">
         <NavLink className="card-container" to={`/series/${series._id}`}>
-          <img src={process.env.PUBLIC_URL+"img/sweet.jpg"} className="card-img-top" alt="..."/>
+          <img src={process.env.REACT_APP_IMG_PATH+series.img} className="card-img-top" alt="..."/>
           <div className="card-img-overlay">
             <h5 className="card-title">{series.name}</h5>
             <p className="pos-bot">{series.genres.join(' / ')}</p>
-            <div>One</div>
+            <div>{series.author}</div>
            <AiFillStar style={{color : 'var(--main-color)'}}/> <span className="main-txt-color">{series.ratting}/10</span>
 
           </div>

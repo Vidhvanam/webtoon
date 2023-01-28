@@ -1,11 +1,23 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-
+import axios from "axios"
 function SeriesInfo() {
   const { id } = useParams()
+  const [series,setSeries] =useState({})
   useEffect(() => {
-
+     axios.get(`http://localhost:6969/api/series/${id}`)
+     .then(series => {
+         console.log(series.data.seriesInfo)
+        
+       setSeries(series.data.seriesInfo)
+     }
+     )
+     .catch(err => console.log(err))
   }, [])
+  useEffect(()=>{
+   console.log('ddd')   
+  },[series])
+  
   return (
     <>
       <div className="main-container ">
@@ -13,12 +25,12 @@ function SeriesInfo() {
         <div className="series-container">
           {/* <h1>{id}</h1> */}
           <div className="series-info">
-            <h1>Lore Olympus</h1>
-            <h3>Rachel Smythe </h3>
-            <p>Witness what the gods do…after dark. The friendships and the lies, the gossip and the wild parties, and of course, forbidden love. Because it turns out, the gods aren’t so different from us after all, especially when it comes to their problems. Stylish and immersive, this is one of mythology’s greatest stories -- The Taking of Persephone -- as it’s never been told before.</p>
+            <h1>{series.name}</h1>
+            <h3>{series.author}</h3>
+            <p>{series.description}</p>
             <div className="flex-row-box gap-2">
-              <span>Subsribers : 500</span>
-              <span>Rating : 9</span>
+              <span>Subsribers : {series.subscribers}</span>
+              <span>Rating : {series.ratting}</span>
               <span>Add Review : </span>
             </div>
            
@@ -29,7 +41,7 @@ function SeriesInfo() {
               <span>this is episode title</span>
               <div>
                 <span className="mr-5">12 /12 /2023</span>
-                <span>episode 1</span>
+                <span># 1</span>
               </div>
             </a>
             <div className="flex-row-box episode">
